@@ -18,7 +18,7 @@
  * @param denominador denominador del numero racional
  * 
  */
-export class numeroRa {
+export class NumeroRa {
   // eslint-disable-next-line max-len
   constructor(protected numerador: number, protected denominador:number) {
   }

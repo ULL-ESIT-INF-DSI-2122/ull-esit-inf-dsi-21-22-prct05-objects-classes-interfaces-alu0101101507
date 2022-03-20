@@ -1,96 +1,10 @@
-# Práctica 5: Objetos, clases e interfaces
-
-## Ejercicio 1 - Pokedex
-
-En este ejercicio hemos de crear una pokedex que almaecen pokemons, para ello hemos de crear una clase pokemons que cuente con las siguientes caracteristicas:
--Nombre y tipo
--Altura,Peso
--Ataque,Defensa,Velocidad y Daño(HP)
-
-La clase pokedex ha de almacenar a estos pokemons y su informacion y tambien hemos de desarrollar una clase combat, en la que se desarrolle el combate
-por tanto tendremos que pasarle los dos pokemons contrincante y realizaremos una funcion de combate que nos devolvera el daño que se haran cada uno 
-dependiendo de su tipo, llamada ```combate``` y una funcion start que sera la encargadad de llevar toda la simulacion de combate.
-
-### Clase pokemon
-
-```
-export class Pokemon {
-  constructor(protected name: string, protected peso: number, protected altura: number, protected tipo: string, protected ataque: number, protected defensa: number, protected velocidad: number, protected damage: number) {
-
-  }
-  getName(): string {
-    return this.name;
-  }
-  getPeso(): number {
-    return this.peso;
-  }
-  getAltura(): number {
-    return this.altura;
-  }
-  getTipo(): string {
-    return this.tipo;
-  }
-  getAtaque(): number {
-    return this.ataque;
-  }
-  getDefensa(): number {
-    return this.defensa;
-  }
-  getVelocidad(): number {
-    return this.velocidad;
-  }
-  getDamage(): number {
-    return this.damage;
-  }
-  setName(name_ : string) {
-    this.name = name_;
-  }
-  setPeso(peso_ : number) {
-    this.peso = peso_;
-  }
-  setAltura(altura_ : number) {
-    this.altura = altura_;
-  }
-  setTipo(tipo_ : string) {
-    this.tipo = tipo_;
-  }
-  setAtaque(ataque_ : number) {
-    this.ataque = ataque_;
-  }
-  setDefensa(defensa_ : number) {
-    this.defensa = defensa_;
-  }
-  setVelocidad(velocidad_ : number) {
-    this.velocidad = velocidad_;
-  }
-  setDamage(damage_ : number) {
-    this.damage = damage_;
-  }
-}
-```
-
-En esta clase hemos de utilizar un constructor con todas las caracteristicas dichas con aterioridad, estas caractaristicas estan puestas en protected pues vamos a accede a ellas mediante funciones de la clase que
-nos permitan coger esos valores del objeto pokemon, a su vez aunque no los llegue a usar he puesto unos set para lo mismo para poder modificar esos valores en caso de que fuera necesario.
-
-### Clase Pokedex
-
-```
-import {Pokemon} from '../pokemon/pokemon';
-export class Pokedex {
-  constructor(protected pokemons: Pokemon[]) {
-
-  }
-  getPokemons(): Pokemon[] {
-    return this.pokemons;
-  }
-}
-```
-
-En esta clase hemos de crear un array de pokemons ya que sera ahi donde almacenaremos, al igual que en una pokedex , los pokemons que se creen y su informacion, y accrederemos a esa variable a travez de una funcion como en la clase anterior
-
-### Clase Combat
-
-```
+/**
+ * En esta clase se realizara el calculo del daño y la simulacion del combate de los pokemons
+ * @param getPokemon1 coger el pokemon 1 de la clase combat
+ * @param getPokemon2 coger el pokemon 2 de la clase combat
+ * @param combate calculo del daño del combate pokemon
+ * @param start simulacion del combate pokemon
+ */
 import {Pokemon} from '../pokemon/pokemon';
 export class Combat {
   constructor(protected pokemon1: Pokemon, protected pokemon2: Pokemon) {
@@ -191,7 +105,3 @@ export class Combat {
     }
   }
 }
-```
-
-En esta clas combat hemos de pasar 2 pokemons que seran los contrincantes, como en los anteriores podemos acceder a estas variables a travez de una funcion get, tambien tenemos una funcion combate que al igual que en un  a practica anterior vamos comprobando el tipo del primer pokemon que se pasa a esta funcion y comparandolo con el segundo para poder calcular el daño qeu se hara en cada iteracion del turno de combate.
-Siguiente a esto nos encntramos con la funcion start que nos permitira realizar una simulacion del combate a travez de un bucle que nos iterara mientras la vida de ambos pokemon no sea 0, si alguna vida llegara a 0 se romperia ese bucle y se mostraria el ganador y se acabaria el programa, dentro del bucle hacemos una llamada a la funcion combate con los pokemon en el orden que queramos empezar el combate y despues repetimos con los pokemon cambiados para completar asi un turno y conseguir los daños y los calculos necesarios para llevar a cabo el combate.

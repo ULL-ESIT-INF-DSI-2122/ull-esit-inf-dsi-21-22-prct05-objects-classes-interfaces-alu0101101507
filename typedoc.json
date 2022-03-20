@@ -1,6 +1,8 @@
 {
   "entryPoints": [
-    "./src/prueba.ts"
+    "./src/combat/combat.ts",
+    "./src/pokemon/pokemon.ts",
+    "./src/pokedex/pokedex.ts"
   ],
   "out": "./docs"
 }
